@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import Input from "./components/Input"
@@ -73,13 +74,10 @@ const checkReservationStatus = async (setInfos) => {
   try {
     const response = await fetch("https://servidor-production-65ab.up.railway.app/status")
     const status = await response.text()
-    console.log(status)
     if (status === 'fechado') {
       setInfos({ max: true, msg: 'Sistema fechado' })
-    } else if (status === 'aberto'){
+    } else {
       setInfos({ max: false, msg: '' })
-    } else if (status == 'max'){
-      setInfos({ max: true, msg: 'Número de reservas máximas alcançadas' })
     }
   } catch (error) {
     console.error("Erro ao verificar o status do sistema:", error)
