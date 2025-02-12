@@ -78,7 +78,7 @@ const checkReservationStatus = async (setInfos) => {
       setInfos({ max: true, msg: 'Sistema fechado' })
     } else if (status == 'aberto'){
       setInfos({ max: false, msg: '' })
-    } else if (status == 'max){
+    } else if (status == 'max'){
       setInfos({ max: true, msg: 'Número de reservas máximas alcançadas' })
     }
                
