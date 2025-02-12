@@ -74,11 +74,14 @@ const checkReservationStatus = async (setInfos) => {
   try {
     const response = await fetch("https://servidor-production-65ab.up.railway.app/status")
     const status = await response.text()
-    if (status === 'fechado') {
+    if (status == 'fechado') {
       setInfos({ max: true, msg: 'Sistema fechado' })
-    } else {
+    } else if (status == 'aberto'){
       setInfos({ max: false, msg: '' })
+    } else if (status == 'max){
+      setInfos({ max: true, msg: 'Número de reservas máximas alcançadas' })
     }
+               
   } catch (error) {
     console.error("Erro ao verificar o status do sistema:", error)
   } 
